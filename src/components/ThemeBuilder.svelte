@@ -2,16 +2,56 @@
   import UIPreviewSVG from "./UIPreviewSVG.svelte";
   import ColorInput from "./ColorInput.svelte";
 
-  let themeColors = {
-    columnBG: "red",
-    menuBGHover: "#ffa300",
-    activeItem: "#ffa300",
-    activeItemText: "#ffffff",
-    hoverItem: "#ffc25f",
-    textColor: "#d6d6d6",
-    activePresence: "#ffa300",
-    mentionBadge: "#c97c00"
+  let aubergine = [
+    "#3F0E40",
+    "#350d36",
+    "#1164A3",
+    "#FFFFFF",
+    "#350D36",
+    "#FFFFFF",
+    "#2BAC76",
+    "#CD2553"
+  ];
+
+  let nocturne = [
+    "#1A1D21",
+    "#000000",
+    "#0576B9",
+    "#FFFFFF",
+    "#000000",
+    "#FFFFFF",
+    "#39E500",
+    "#CC4400"
+  ];
+
+  let colors = [...nocturne];
+
+  const updateQueryStringParam = (key, value) => {
+    var baseUrl = [
+        location.protocol,
+        "//",
+        location.host,
+        location.pathname
+      ].join(""),
+      urlQueryString = document.location.search,
+      newParam = key + "=" + value,
+      params = "?" + newParam;
+
+    window.history.replaceState({}, "", baseUrl + params);
   };
+  $: updateQueryStringParam("colors", encodeURIComponent(String(colors)));
+
+  const urlParams = new URLSearchParams(window.location.search);
+  console.log(`has colors ${urlParams.has("colors")}`); // true
+  console.log(`colors: ${urlParams.get("colors")}`); // "shirt"
+
+  // console.log(typeof colorsAsString);
+  // console.log(colorsAsString);
+  // console.log(encodedColors);
+
+  $: console.log(colors);
+
+  // updateQueryStringParam("colors", encodedColors);
 </script>
 
 <style>
@@ -25,19 +65,21 @@
 
   <ColorInput
     inputLabel="Column BG"
-    id="columnBG"
-    bind:value={themeColors.columnBG} />
+    inputId="columnBG"
+    bind:value={colors[0]} />
 
   <ColorInput
-    inputLabel="Text Color"
-    id="textColor"
-    bind:value={themeColors.textColor} />
+    inputLabel="Menu BG Hover"
+    inputId="menuBGHover"
+    bind:value={colors[1]} />
 
-  <!-- {#each themeColorsArray as color} -->
-  <!-- <ul> -->
-  <!-- <li>{color}</li> -->
-  <!-- </ul> -->
-  <!-- {/each} -->
-
-  <UIPreviewSVG {themeColors} />
+  <UIPreviewSVG
+    columnBG={colors[0]}
+    menuBGHover={colors[1]}
+    activeItem={colors[2]}
+    activeItemText={colors[3]}
+    hoverItem={colors[4]}
+    textColor={colors[5]}
+    activePresence={colors[6]}
+    mentionBadge={colors[7]} />
 </div>
