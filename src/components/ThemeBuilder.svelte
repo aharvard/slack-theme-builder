@@ -12,7 +12,6 @@
     "#2BAC76",
     "#CD2553"
   ];
-
   let nocturne = [
     "#1A1D21",
     "#000000",
@@ -24,34 +23,47 @@
     "#CC4400"
   ];
 
-  let colors = [...nocturne];
+  let colors;
+  $: colors = nocturne;
+  $: encodedColors = encodeURIComponent(String(colors));
+
+  let urlParams = new URLSearchParams(window.location.search);
+  let hasColorsParam = urlParams.has("colors");
 
   const updateQueryStringParam = (key, value) => {
-    var baseUrl = [
-        location.protocol,
-        "//",
-        location.host,
-        location.pathname
-      ].join(""),
-      urlQueryString = document.location.search,
-      newParam = key + "=" + value,
-      params = "?" + newParam;
-
+    let baseUrl = [
+      location.protocol,
+      "//",
+      location.host,
+      location.pathname
+    ].join("");
+    let newParam = key + "=" + value;
+    let params = "?" + newParam;
     window.history.replaceState({}, "", baseUrl + params);
+    console.log(`Colors from input: ${colors}`);
   };
-  $: updateQueryStringParam("colors", encodeURIComponent(String(colors)));
 
-  const urlParams = new URLSearchParams(window.location.search);
-  console.log(`has colors ${urlParams.has("colors")}`); // true
-  console.log(`colors: ${urlParams.get("colors")}`); // "shirt"
+  let URLHasBeenRead = false;
 
-  // console.log(typeof colorsAsString);
-  // console.log(colorsAsString);
-  // console.log(encodedColors);
+  const readQueryStringParam = () => {
+    if (!URLHasBeenRead) {
+      let colorParams = urlParams.get("colors");
+      let newColorArray = colorParams.split(",");
+      colors = newColorArray;
+      URLHasBeenRead = true;
+      console.log(`Colors from URL: ${colors}`);
+    } else {
+      colors = colors;
+      updateQueryStringParam("colors", encodedColors);
+    }
+  };
 
-  $: console.log(colors);
-
-  // updateQueryStringParam("colors", encodedColors);
+  // DO STUFF HERE
+  $: if (hasColorsParam) {
+    readQueryStringParam();
+  } else {
+    updateQueryStringParam("colors", encodedColors);
+  }
 </script>
 
 <style>
