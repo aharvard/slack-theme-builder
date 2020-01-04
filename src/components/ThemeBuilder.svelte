@@ -23,8 +23,7 @@
     "#CC4400"
   ];
 
-  let colors;
-  $: colors = nocturne;
+  $: colors = aubergine;
   $: encodedColors = encodeURIComponent(String(colors));
 
   let urlParams = new URLSearchParams(window.location.search);
@@ -68,30 +67,84 @@
 
 <style>
   .theme-builder {
-    outline: 1px solid gainsboro;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    place-items: center;
+  }
+  @media (min-width: 50em) {
+    .theme-builder {
+      grid-template-columns: auto 1fr;
+    }
+  }
+
+  .color-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .ui-preview-svg {
   }
 </style>
 
+<h2>Theme Builder</h2>
 <div class="theme-builder">
-  <h2>Theme Builder</h2>
+  <form class="color-inputs">
+    <ColorInput
+      inputLabel="Column BG"
+      inputId="columnBG"
+      bind:value={colors[0]} />
 
-  <ColorInput
-    inputLabel="Column BG"
-    inputId="columnBG"
-    bind:value={colors[0]} />
+    <ColorInput
+      inputLabel="Menu BG Hover"
+      inputId="menuBGHover"
+      bind:value={colors[1]} />
 
-  <ColorInput
-    inputLabel="Menu BG Hover"
-    inputId="menuBGHover"
-    bind:value={colors[1]} />
+    <ColorInput
+      inputLabel="Active Item"
+      inputId="activeItem"
+      bind:value={colors[2]} />
 
-  <UIPreviewSVG
-    columnBG={colors[0]}
-    menuBGHover={colors[1]}
-    activeItem={colors[2]}
-    activeItemText={colors[3]}
-    hoverItem={colors[4]}
-    textColor={colors[5]}
-    activePresence={colors[6]}
-    mentionBadge={colors[7]} />
+    <ColorInput
+      inputLabel="Active Item Text"
+      inputId="activeItemText"
+      bind:value={colors[3]} />
+
+    <ColorInput
+      inputLabel="Hover Item"
+      inputId="hoverItem"
+      bind:value={colors[4]} />
+
+    <ColorInput
+      inputLabel="Text Color"
+      inputId="textColor"
+      bind:value={colors[5]} />
+
+    <ColorInput
+      inputLabel="Active Presence"
+      inputId="activePresence"
+      bind:value={colors[6]} />
+
+    <ColorInput
+      inputLabel="Mention Badge"
+      inputId="mentionBadge"
+      bind:value={colors[7]} />
+  </form>
+  <div class="ui-preview-svg">
+    <UIPreviewSVG
+      columnBG={colors[0]}
+      menuBGHover={colors[1]}
+      activeItem={colors[2]}
+      activeItemText={colors[3]}
+      hoverItem={colors[4]}
+      textColor={colors[5]}
+      activePresence={colors[6]}
+      mentionBadge={colors[7]} />
+  </div>
+</div>
+
+<div>
+  <h2>Paste These Into Slack</h2>
+  <p>{colors}</p>
 </div>

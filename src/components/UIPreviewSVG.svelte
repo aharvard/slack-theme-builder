@@ -1,24 +1,13 @@
 <script>
-  export let columnBG = "black";
-  export let menuBGHover = "#222";
-  export let hoverItem = "#333333";
-  export let activeItem = "blue";
-  export let activeItemText = "cyan";
-  export let textColor = "pink";
-  export let activePresence = "yellow";
-  export let mentionBadge = "purple";
+  export let columnBG;
+  export let menuBGHover;
+  export let hoverItem;
+  export let activeItem;
+  export let activeItemText;
+  export let textColor;
+  export let activePresence;
+  export let mentionBadge;
 </script>
-
-<ul>
-  <li>columnBG: {columnBG}</li>
-  <li>menuBGHover: {menuBGHover}</li>
-  <li>activeItem: {activeItem}</li>
-  <li>activeItemText: {activeItemText}</li>
-  <li>hoverItem: {hoverItem}</li>
-  <li>textColor: {textColor}</li>
-  <li>activePresence: {activePresence}</li>
-  <li>mentionBadge: {mentionBadge}</li>
-</ul>
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.7 81.39">
 
@@ -70,7 +59,7 @@
     rx="2.27" />
   <circle
     data-id="R-03active-presense"
-    fill={mentionBadge}
+    fill={activePresence}
     cx="9.67"
     cy="51.62"
     r="2.27" />
@@ -104,7 +93,6 @@
     data-id="R-01-_"
     fill={textColor}
     d="M12,30.32l-.14.95h-.83l-.23,1.49H9.74L10,31.27H9.29l-.24,1.49H8l.24-1.49H7.39l.15-.95h.82l.11-.67H7.65l.15-.94h.82l.22-1.38H9.91l-.22,1.38h.69l.22-1.38h1.08l-.22,1.38h.81l-.14.94h-.82l-.1.67Zm-1.8-.67H9.54l-.11.67h.7Z" />
-
   <rect
     data-id="active-badge"
     fill={mentionBadge}
@@ -113,7 +101,6 @@
     width="14.4"
     height="6.77"
     rx="3.39" />
-
   <rect
     data-id="user-name"
     fill={textColor}
@@ -122,7 +109,6 @@
     width="50.51"
     height="4.55"
     rx="2.27" />
-
   <rect
     data-id="slack-team"
     fill={textColor}
@@ -131,5 +117,4 @@
     width="30.51"
     height="8.58"
     rx="2.27" />
-
 </svg>
