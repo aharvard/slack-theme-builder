@@ -87,6 +87,10 @@
   .ui-preview-svg {
     width: 100%;
   }
+
+  .slack-color-list {
+    word-wrap: break-word;
+  }
 </style>
 
 <h2>Theme Builder</h2>
@@ -147,5 +151,5 @@
 
 <div>
   <h2>Paste These Into Slack</h2>
-  <p>{colors}</p>
+  <p class="slack-color-list">{colors}</p>
 </div>
