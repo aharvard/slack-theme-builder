@@ -70,7 +70,6 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    align-items: last baseline;
   }
   @media (min-width: 50em) {
     .theme-builder {
