@@ -18,7 +18,7 @@
   <path
     data-id="menu-BG-Hover"
     fill={menuBGHover}
-    style="transform: translateY(0.1%);"
+    style="transform: translateY(1%);"
     d="M2,0H109.7a2,2,0,0,1,2,2V23.46a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V2A2,2,0,0,1,2,0Z" />
   <rect
     data-id="R-00-name"
