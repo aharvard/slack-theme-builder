@@ -21,6 +21,6 @@ npm run dev
 ```
 Navigate to [localhost:5000](http://localhost:5000). Your running app will look something like this.
 
-![Your running App] (./public/SlackThemeApp.png)
+![Your running App] (https://github.com/aharvard/public/SlackThemeApp.png)
 
 Copy the line of hex color values into your Slack Theme to enjoy.
