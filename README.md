@@ -1,5 +1,7 @@
 # Slack Theme Builder
 
+https://slack-theme-builder.netlify.com
+
 Generate your Slack theme from this app built with [Svelte](https://svelte.dev). 
 
 ## Get started
